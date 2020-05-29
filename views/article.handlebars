@@ -1,0 +1,46 @@
+<div class="tile is-ancestor">
+    <h3 class="title is-3">{{article.title}}</h3>
+    <h5 class="subtitle is-5">{{body}}</h5>
+</div>
+
+<div class="tile">
+    <div class="tile is-parent">
+        <div class="tile is-child">
+            <form action="/comment/{{article._id}}" method="POST" class="card-title">
+                <h5 class="title is-5">Comment on this Article</h5>
+                <div class="tile is-child">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-primary" type="text" placeholder="Name" name="name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-primary" type="text" placeholder="Comment" name="comment">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="tile is-parent">
+            <h5 class="title is-5">Comments:</h5>
+            {{#if article.comment}}
+            {{#each article.comment}}
+            <div class="card">
+                <p id="nameComment">
+                    <p>{{body}}</p>
+                </p>
+            </div>
+            {{/each}}
+            {{else}}
+            <p>No Comments Yet.</p>
+            {{/if}}
+        </div>
+
+    </div>
+</div>

@@ -1,7 +1,19 @@
 <div class="tile is-ancestor">
-  <div class="tile is-4 is-vertical">
+  <div class="tile is-8 is-vertical">
     <div class="tile">
       <!-- Top tile -->
+      <h2 class="title-is2">Read the lastest articles about Hair!</h2>
+      <h5 class="subtitle-is5">Click "Scrape" to get the newest articles about haircare trends!</h5>
     </div>
+  </div>
+  <div class="tile is-parent">
+      <div class="tile">
+          {{#each article}}
+          <div class="tile is-child">
+              <h4>{{this.title}}</h4>
+              <a href="/readArticle/{{this._id}}" class="button" id="btnSignUp">Read Article</a>
+          </div>
+          {{/each}}
+      </div>
   </div>
 </div>
