@@ -1,3 +1,4 @@
+<br>
 <div class="tile is-ancestor">
   <div class="tile is-8 is-vertical">
     <div class="tile">
@@ -10,8 +11,10 @@
       <div class="tile">
           {{#each article}}
           <div class="tile is-child">
-              <h4>{{this.title}}</h4>
+              <h2>{{this.title}}</h2>
+              <br>
               <a href="/readArticle/{{this._id}}" class="button" id="btnSignUp">Read Article</a>
+              <br>
           </div>
           {{/each}}
       </div>
