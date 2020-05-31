@@ -97,7 +97,7 @@ router.get("/readArticle/:id", function(req, res) {
   };
 
   Article.findOne({ _id: articleId })
-  .lean()
+    .lean()
     .populate("comment")
     .exec(function(err, doc) {
       if (err) {
