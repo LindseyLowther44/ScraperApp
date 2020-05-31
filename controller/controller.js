@@ -13,11 +13,11 @@ router.get("/", function(req, res) {
 });
 
 router.get("/scrape", function(req, res) {
-  request("http://www.theverge.com", function(error, response, html) {
+  request("https://www.nytimes.com/section/science/space", function(error, response, html) {
     var $ = cheerio.load(html);
     var titlesArray = [];
 
-    $(".c-entry-box--compact__title").each(function(i, element) {
+    $(".css-1l4spti").each(function(i, element) {
       var result = {};
 
       result.title = $(this)
@@ -56,6 +56,7 @@ router.get("/scrape", function(req, res) {
 });
 router.get("/articles", function(req, res) {
   Article.find()
+  .lean()
     .sort({ _id: -1 })
     .exec(function(err, doc) {
       if (err) {
@@ -96,6 +97,7 @@ router.get("/readArticle/:id", function(req, res) {
   };
 
   Article.findOne({ _id: articleId })
+  .lean()
     .populate("comment")
     .exec(function(err, doc) {
       if (err) {
