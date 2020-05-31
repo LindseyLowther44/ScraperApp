@@ -1,48 +1,45 @@
-<div class="tile is-ancestor">
-    <h3 class="title is-3">{{article.title}}</h3>
-    <h5 class="subtitle is-5">{{body}}</h5>
+<div class="row">
+    <h3 class="card">{{article.title}}</h3>
+    <h5 class="card-panel articleBody">{{body}}</h5>
 </div>
 
-<div class="tile">
-    <div class="tile is-parent">
-        <div class="tile is-child">
-            <form action="/comment/{{article._id}}" method="POST" class="card-title">
-                <h5 class="title is-5">Comment on this Article</h5>
-                <div class="tile is-child">
-                    <div class="field">
-                        <div class="control">
-                            <i class="far fa-dove" style="color: #339af0;"></i>
-                            <input class="input is-primary" type="text" placeholder="Name" name="name">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <i class="far fa-dove" style="color: #339af0;"></i>
-                            <input class="input is-primary" type="text" placeholder="Comment" name="comment">
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="field">
-                <div class="control">
-                    <button class="button is-primary">Submit</button>
-                </div>
+<div class="row">
+    <div class="col s2"></div>
+    <form action="/comment/{{article._id}}" method="POST" class="card-panel col s8">
+        <h5>Comment on this Article</h5>
+        <div class="row">
+            <div class="input-field">
+                <i class="material-icons prefix">perm_identity</i>
+                <input id="icon_prefix" type="text" placeholder="Name" name="name" class="validate active">
+            </div>
+
+            <div class="input-field">
+                <i class="material-icons prefix">comment</i>
+                <input id="icon_telephone" type="text" placeholder="Comment" name="comment" class="validate active">
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <center><input class="btn add-comment-button topnav" type="submit" value="Submit"></center>
             </div>
         </div>
-        <div class="tile is-parent">
-            <h5 class="title is-5">Comments:</h5>
-            {{#if article.comment}}
-            {{#each article.comment}}
-            <div class="card">
-                <p id="nameComment">
-                    <p>{{body}}</p>
-                </p>
-            </div>
-            {{/each}}
-            {{else}}
-            <p>No Comments Yet.</p>
-            {{/if}}
+    </form>
+</div>
+<div class="row">
+    <div class="col s2"></div>
+    <div class="col s8">
+        <h5>Comments:</h5>
+        {{#if article.comment}}
+        {{#each article.comment}}
+        <div class="card">
+            <p id="nameComment">{{name}}</p>
+            <p>{{body}}<p>
         </div>
+        {{/each}}
+        {{else}}
+        <p>No Comments Yet.</p>
+        {{/if}}
 
     </div>
 </div>
